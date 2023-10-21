@@ -1,4 +1,4 @@
-const LandingPage = () => {
+const functionLandingPage = () => {
   return (
     <div>
       Landing page (Unprotected)
@@ -6,4 +6,4 @@ const LandingPage = () => {
   )
 }
 
-export default LandingPage
+export default functionLandingPage
