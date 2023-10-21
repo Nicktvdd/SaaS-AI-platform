@@ -1,8 +1,14 @@
 import { Button } from "@/components/ui/button"
+import { UserButton } from "@clerk/nextjs/app-beta"
 
 
-export default function DashboardPage() {
+const DashboardPage = () => {
   return (
-    <Button variant="destructive" size="lg">Dashboard page (protected)</Button>
+    <div>
+    <p>Dashboard Page (Protected)</p>
+    <UserButton afterSignOutUrl="/" />
+    </div>
   )
 }
+
+export default DashboardPage
