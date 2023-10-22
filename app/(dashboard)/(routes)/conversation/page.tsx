@@ -7,6 +7,7 @@ import { formSchema } from "./constants";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 const ConversationPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -41,11 +42,17 @@ const ConversationPage = () => {
               render={({ field }) => (
                 <FormItem className="col-span-12 lg:col-span-10">
                   <FormControl className="m-0 p-0">
-                    <Input className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"/>
+                    <Input className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
+                    disabled={isLoading}
+                    placeholder="Hello how are you doing today?"
+                    {...field}
+                    />
                   </FormControl>
-
                 </FormItem>
               )}/>
+              <Button className="col-span-12 lg:col-span-2 w-full">
+                Generate
+              </Button>
             </form>
           </Form>
         </div>
