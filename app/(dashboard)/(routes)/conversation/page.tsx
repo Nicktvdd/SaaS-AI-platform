@@ -36,13 +36,14 @@ const ConversationPage = () => {
       const newMessages = [...messages, userMessage]
 
       const response = await axios.post("/api/conversation", {
-        messages:newMessages,
+        messages: newMessages,
       })
 
       setMessages((current) => [...current, userMessage, response.data])
 
-      form.reset
+      form.reset()
     } catch (error: any) {
+      // TODO: Open Pro Modal
       console.log(error)
     } finally {
       router.refresh()
@@ -83,7 +84,13 @@ const ConversationPage = () => {
           </Form>
         </div>
         <div className="space-y-4 mt-4">
-          messages content
+          <div className="flex flex-col-reverse gap-y-4">
+            {messages.map((message) => (
+              <div key={message.content}>
+                {message.content}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -18,11 +18,11 @@ export async function POST(
             return new NextResponse("Unauthorized", { status: 401 })
         }
         
-        if (!configuration.apiKey) {
+        if (!process.env.OPENAI_API_KEY) {
             return new NextResponse("OpenAI Key not configured", { status: 500 })
         }
 
-        if(!messages) {
+        if (!messages) {
             return new NextResponse("Messages are required", { status: 400 })
         }
 
@@ -31,7 +31,7 @@ export async function POST(
             messages
         })
 
-        return NextResponse.(JSON.stringify(response.choices[0].message))
+        return new NextResponse(JSON.stringify(response.choices[0].message))
     } catch (error) {
         console.log("[CONVERSATION_ERROR]", error )
         return new NextResponse("Internal error", { status : 500 })
